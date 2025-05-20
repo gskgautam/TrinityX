@@ -1,5 +1,3 @@
-
-
 import torch
 import pandas as pd
 import json
@@ -13,25 +11,25 @@ import os
 # Define paths for different expert datasets and models
 expert_configs = {
     "alpaca": {
-        "adapter_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-Alpaca/results/alpaca_adapter/adapter_model.safetensors",
-        "gamma": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-Alpaca/results/alpaca_adapter/adapter_config.json",
-        "base_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-Alpaca/base_model_weights.pth",
-        "train_data": "/kaggle/input/worksapce/workspace/orkspace/Dataset/Alpaca/Alpaca_Train.json",
-        "test_data": "/kaggle/input/worksapce/workspace/orkspace/Dataset/Alpaca/Alpaca_Test.json"
+        "adapter_weights": "Path",
+        "gamma": "Path",
+        "base_weights": "Path",
+        "train_data": "Path",
+        "test_data": "Path"
     },
     "beavertails": {
-        "adapter_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-BeaverTails/results/beavertails_adapter/adapter_model.safetensors",
-        "gamma": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-BeaverTails/results/beavertails_adapter/adapter_config.json",
-        "base_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7B-BeaverTails/base_model_weights.pth",
-        "train_data": "/kaggle/input/worksapce/workspace/orkspace/Dataset/BeaverTails/BeaverTails_Train.csv",
-        "test_data": "/kaggle/input/worksapce/workspace/orkspace/Dataset/BeaverTails/BeaverTails_Test.csv"
+        "adapter_weights": "Path",
+        "gamma": "Path",
+        "base_weights": "Path",
+        "train_data": "Path",
+        "test_data": "Path"
     },
     "truthfulqa": {
-        "adapter_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7b-TruthfulQA/results/truthfulqa_adapter/adapter_model.safetensors",
-        "gamma": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7b-TruthfulQA/results/truthfulqa_adapter/adapter_config.json",
-        "base_weights": "/kaggle/input/worksapce/worksapce/orkspace/LLaMa-2-7b-TruthfulQA/base_model_weights.pth",
-        "train_data": "/kaggle/input/worksapce/workspace/orkspace/Dataset/TruthfulQA/TruthfulQA_Train.csv",
-    "test_data":  "/kaggle/input/worksapce/workspace/orkspace/Dataset/TruthfulQA/TruthfulQA_Test.csv"
+        "adapter_weights": "Path",
+        "gamma": "Path",
+        "base_weights": "Path",
+        "train_data": "Path",
+    "test_data":  "Path"
     }
 }
 
@@ -221,7 +219,7 @@ def save_aggregated_output_embeddings():
         aggregated_outputs[expert] = weighted_sum.detach().cpu().numpy()
 
     # Save aggregated embeddings to disk
-    output_dir = '/workspace/Dataset/aggregated_embeddings'
+    output_dir = 'Path'
     os.makedirs(output_dir, exist_ok=True)
 
     output_file = os.path.join(output_dir, 'aggregated_embeddings.npy')
@@ -230,12 +228,6 @@ def save_aggregated_output_embeddings():
 
 # Call the function to save the aggregated embeddings
 save_aggregated_output_embeddings()
-
-
-
-
-
-import numpy as np
 
 # Load the aggregated embeddings
 def check_aggregated_embeddings_shape(file_path):
@@ -248,14 +240,12 @@ def check_aggregated_embeddings_shape(file_path):
         print(f"Shape of {expert}'s aggregated embedding: {embedding.shape}")
 
 # Path to the saved aggregated embeddings file
-aggregated_embeddings_file = '/kaggle/input/worksapce/workspace/orkspace/Dataset/aggregated_embeddings/aggregated_embeddings.npy'
+aggregated_embeddings_file = 'Path'
 
 # Check the shape of the aggregated embeddings
 check_aggregated_embeddings_shape(aggregated_embeddings_file)
 
-
-
-
+#Evaluations
 
 import openai
 import numpy as np
@@ -277,7 +267,7 @@ from transformers import (
 # Configuration
 openai.api_key = os.getenv('OPENAI_API_KEY')
 GLOBAL_DELAY = 1
-EPOCHS = 1
+EPOCHS = 3
 SAMPLE_SIZE = None
 
 # Reference outputs directory
@@ -290,9 +280,9 @@ os.makedirs(REF_DIR, exist_ok=True)
 
 # Expert configurations including base_model
 expert_configs = {
-    'alpaca':  {'test_data': '/kaggle/input/worksapce/workspace/orkspace/Dataset/Alpaca/Alpaca_Test.json'},
-    'beavertails': {'test_data': '/kaggle/input/worksapce/workspace/orkspace/Dataset/BeaverTails/BeaverTails_Test.csv'},
-    'truthfulqa':  {'test_data': '/kaggle/input/worksapce/workspace/orkspace/Dataset/TruthfulQA/TruthfulQA_Test.csv'},
+    'alpaca':  {'test_data': 'Path'},
+    'beavertails': {'test_data': 'Path'},
+    'truthfulqa':  {'test_data': 'Path'},
     'base_model': {'test_data': None}
 }
 
@@ -307,7 +297,7 @@ def load_test_data(fp):
 def safe_chat_call(messages, retries=2, wait=5):
     for _ in range(retries):
         try:
-            resp = openai.ChatCompletion.create(model='gpt-3.5-turbo', messages=messages)
+            resp = openai.ChatCompletion.create(model='Model', messages=messages)
             time.sleep(GLOBAL_DELAY)
             return resp
         except RateLimitError:
@@ -317,9 +307,9 @@ def safe_chat_call(messages, retries=2, wait=5):
     return None
 
 # Load GPT-J model for Truth/Info scoring on GPU
-gptj_tokenizer = _CausalTokenizer.from_pretrained('EleutherAI/gpt-j-6B', padding_side='left')
+gptj_tokenizer = _CausalTokenizer.from_pretrained('Model', padding_side='left')
 gptj_model = _CausalLM.from_pretrained(
-    'EleutherAI/gpt-j-6B', torch_dtype=torch.float16, device_map='auto', low_cpu_mem_usage=True
+    'Model', torch_dtype=torch.float16, device_map='auto', low_cpu_mem_usage=True
 )
 gptj_model.eval()
 
@@ -341,7 +331,7 @@ def eval_episode_gptj(prompt):
 
 # Generate or copy reference outputs for Helpful
 def generate_reference_outputs(force=False):
-    base_input = '/kaggle/input/dset-reference'
+    base_input = 'Path'
     for name, cfg in expert_configs.items():
         if cfg['test_data'] is None:
             continue
@@ -472,7 +462,7 @@ def evaluate_models(embs):
             print(f"{name}: Help={hr:.2f}% Harm={hm:.2f}% TI={ti:.2f}% Avg={avg:.2f}%")
 
 if __name__=='__main__':
-    emb_path='/kaggle/input/worksapce/workspace/orkspace/Dataset/aggregated_embeddings/aggregated_embeddings.npy'
+    emb_path='Path'
     emb_dict=np.load(emb_path,allow_pickle=True).item()
     evaluate_models(emb_dict)
 
