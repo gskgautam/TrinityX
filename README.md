@@ -46,9 +46,3 @@ Simply pass your chosen model and dataset to `Task_Vector.py` to extract and com
 - Any of the models listed above (e.g., LLaMA-2 7B, Mistral-7B, Gemma-7B, DeepSeek-7B)
 - Any of the supported datasets (e.g., Alpaca, BeaverTails, TruthfulQA)
 
-- **Gemma-7B**  
-  [Download from Hugging Face](https://huggingface.co/google/gemma-7b)
-
-- **DeepSeek-7B**  
-  [Download from Hugging Face](https://huggingface.co/deepseek-ai/deepseek-llm-7b-base)
-
