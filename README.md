@@ -1,7 +1,5 @@
 # TrinityX
 
-# Dataset and Model Resources for Instruction-Tuned Language Model Evaluation
-
 ## 📚 Datasets
 
 The following datasets can be accessed from their respective official sources:
