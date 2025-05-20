@@ -46,3 +46,26 @@ Simply pass your chosen model and dataset to `Task_Vector.py` to extract and com
 - Any of the models listed above (e.g., LLaMA-2 7B, Mistral-7B, Gemma-7B, DeepSeek-7B)
 - Any of the supported datasets (e.g., Alpaca, BeaverTails, TruthfulQA)
 
+## 🔁 Follow-up Processing and Evaluation
+
+Once task vectors, weights, base weights, and gamma values have been extracted using `Task_Vector.py`, you can proceed with further processing and evaluation using any of the following scripts:
+
+- `MoCaE.py`
+- `MoCaE_GL.py`
+- `MoCaE_GL_RL.py`
+
+These scripts are designed to apply modular calibration and editing strategies on the extracted task vectors to align model behavior with desired moderation outcomes.
+
+### 📈 Evaluation
+
+After applying any of the MoCaE methods, use `Evaluate.py` to assess the performance of the calibrated models.
+
+> ⚠️ Note: Make sure you have the appropriate access to the moderation models used for evaluation. These include:
+
+- GPT-4.0 (via OpenAI API)
+- beaver-dam-7b — available here: [PKU-Alignment/beaver-dam-7b](https://huggingface.co/PKU-Alignment/beaver-dam-7b)
+- GPT-Judge (via OpenAI API)
+
+These evaluators are used to provide automated and/or human-aligned judgment of the calibrated outputs in terms of helpfulness, harmlessness, and honesty.
+
+
