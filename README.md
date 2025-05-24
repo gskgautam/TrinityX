@@ -27,11 +27,11 @@ The following instruction-tuned large language models can be downloaded from Hug
 - **Mistral-7B**  
   [Download from Hugging Face](https://huggingface.co/mistralai/Mistral-7B-v0.1)
 
-  - **Gemma-7B**  
-  [Download from Hugging Face]([https://huggingface.co/mistralai/Mistral-7B-v0.1](https://huggingface.co/google/gemma-7b))
+ - **Gemma-7B**  
+  [Download from Hugging Face](https://huggingface.co/google/gemma-7b)
 
 - **DeepSeek-7B**  
-  [Download from Hugging Face]([https://huggingface.co/mistralai/Mistral-7B-v0.1](https://huggingface.co/deepseek-ai/deepseek-llm-7b-base))
+  [Download from Hugging Face](https://huggingface.co/deepseek-ai/deepseek-llm-7b-base)
 
 
 ## 🛠️ Usage: Task_Vector.py
@@ -72,4 +72,5 @@ After applying any of the MoCaE methods, use `Evaluate.py` to assess the perform
 
 These evaluators are used to provide automated and/or human-aligned judgment of the calibrated outputs in terms of helpfulness, harmlessness, and honesty.
 
-
+🖥️ Note on Performance Variability:
+Evaluation results may vary by up to ±10% depending on your hardware configuration, especially GPU type, memory bandwidth, and compute environment. This margin reflects differences in numerical precision, runtime optimizations, and stability of training dynamics during task vector extraction and calibration.
