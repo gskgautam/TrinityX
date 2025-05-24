@@ -27,6 +27,12 @@ The following instruction-tuned large language models can be downloaded from Hug
 - **Mistral-7B**  
   [Download from Hugging Face](https://huggingface.co/mistralai/Mistral-7B-v0.1)
 
+  - **Gemma-7B**  
+  [Download from Hugging Face]([https://huggingface.co/mistralai/Mistral-7B-v0.1](https://huggingface.co/google/gemma-7b))
+
+- **DeepSeek-7B**  
+  [Download from Hugging Face]([https://huggingface.co/mistralai/Mistral-7B-v0.1](https://huggingface.co/deepseek-ai/deepseek-llm-7b-base))
+
 
 ## 🛠️ Usage: Task_Vector.py
 
