@@ -112,7 +112,7 @@ def compute_task_vector(base_model, adapter_model, device):
         print("1. Verify that training loss decreased during training.")
         print("2. Check that LoRA layers are updating using print_trainable_parameters().")
         print("3. Inspect saved adapter weights to confirm changes.")
-        raise ValueError("🚨 Task vector is empty. Ensure adapter model was trained correctly.")
+        raise ValueError("Task vector is empty. Ensure adapter model was trained correctly.")
 
     print(f"Computed task vector with {nonzero_count} nonzero layers.")
     torch.save(task_vector, "task_vector.pt")  # Save task vector to disk
