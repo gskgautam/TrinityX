@@ -71,6 +71,3 @@ After applying any of the MoCaE methods, use `Evaluate.py` to assess the perform
 - GPT-Judge (via OpenAI API)
 
 These evaluators are used to provide automated and/or human-aligned judgment of the calibrated outputs in terms of helpfulness, harmlessness, and honesty.
-
-🖥️ Note on Performance Variability:
-Evaluation results may vary by up to ±10% depending on your hardware configuration, especially GPU type, memory bandwidth, and compute environment. This margin reflects differences in numerical precision, runtime optimizations, and stability of training dynamics during task vector extraction and calibration.
