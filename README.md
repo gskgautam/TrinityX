@@ -68,6 +68,18 @@ After applying any of the MoCaE methods, use `Evaluate.py` to assess the perform
 
 - GPT-4.0 (via OpenAI API)
 - beaver-dam-7b — available here: [PKU-Alignment/beaver-dam-7b](https://huggingface.co/PKU-Alignment/beaver-dam-7b)
-- GPT-Judge (via OpenAI API)
+- GPT-Judge (via OpenAI API) 
 
 These evaluators are used to provide automated and/or human-aligned judgment of the calibrated outputs in terms of helpfulness, harmlessness, and honesty.
+
+## Citation
+
+If you use this work, please cite:
+
+```bibtex
+@inproceedings{kashyap2025too,
+  title     = {Too Helpful, Too Harmless, Too Honest or Just Right?},
+  author    = {Kashyap, Gautam Siddharth and Dras, Mark and Naseem, Usman},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2025}
+}
